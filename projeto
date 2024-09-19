@@ -1,0 +1,33 @@
+import time
+
+print('''1 - Adicionar um produto
+2 - Remover um produto
+3 - Ver os produtos atuais
+4 - Sair do programa''')
+
+itens = []
+
+while True:
+    op = str(input('O que você deseja fazer?'))
+    if op == '1':
+        cod = str(input('Insira o código deste produto que você deseja adicionar'))
+        if cod in itens:
+            print('Esse produto já foi registrado!')
+        else:
+            itens.append(cod)
+            print('Produto registrado com sucesso!')
+    elif op == '2':
+        produto = str(input('Insira o nome do produto que você deseja remover'))
+        if produto in itens:
+            itens.remove(produto)
+            if not produto in itens:
+                print('Produto removido com sucesso!')
+            elif produto in itens:
+                print('O produto deu erro, arruma edu')
+        else:
+            print('Produto não encontrado, você digitou corretamente?')
+    elif op == '3':
+        print(itens)
+    elif op == '4':
+        print('Saindo, obrigado por utilizar o programa!')
+        break
