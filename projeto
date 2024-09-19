@@ -3,7 +3,8 @@ import time
 print('''1 - Adicionar um produto
 2 - Remover um produto
 3 - Ver os produtos atuais
-4 - Sair do programa''')
+4 - Ver nomenclaturas
+5 - Sair do programa''')
 
 itens = []
 
@@ -22,12 +23,24 @@ while True:
             itens.remove(produto)
             if not produto in itens:
                 print('Produto removido com sucesso!')
-            elif produto in itens:
-                print('O produto deu erro, arruma edu')
         else:
             print('Produto não encontrado, você digitou corretamente?')
     elif op == '3':
         print(itens)
     elif op == '4':
+        print('Nomenclaturas:')
+        print('------------------------------------------')
+        print('Doce de leite puro = D-P')
+        print('Doce de leite com maracujá = D-MAR')
+        print('Doce de leite com abacaxi = D-ABA')
+        print('Doce de leite com morango = D-MOR')
+        print('Doce de leite com chocolate = D-CHO')
+        print('Doce de leite com goiaba = D-GOI')
+        print('Doce de leite com abóbora = D-ABO')
+        print('Doce de leite com amendoim = D-AMN')
+        print('Doce de leite com nozes = D-NOZ')
+        print('Doce de leite com ameixa = D-AME')
+        print('Doce de leite com paçoca = D-PAÇ')
+    elif op == '5':
         print('Saindo, obrigado por utilizar o programa!')
         break
