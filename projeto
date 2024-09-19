@@ -1,4 +1,4 @@
-import time
+lista_produtos = ['D-P', 'D-MAR', 'D-ABA', 'D-MOR', 'D-CHO', 'D-GOI', 'D-ABO', 'D-AMN' 'D-NOZ', 'D-AME', 'D-PAÇ']
 
 print('''1 - Adicionar um produto
 2 - Remover um produto
@@ -14,7 +14,7 @@ while True:
         cod = str(input('Insira o código deste produto que você deseja adicionar'))
         if cod in itens:
             print('Esse produto já foi registrado!')
-        else:
+        elif not cod in itens and cod[:2] == 'D-':
             itens.append(cod)
             print('Produto registrado com sucesso!')
     elif op == '2':
