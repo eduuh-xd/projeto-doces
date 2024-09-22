@@ -1,46 +1,103 @@
-lista_produtos = ['D-P', 'D-MAR', 'D-ABA', 'D-MOR', 'D-CHO', 'D-GOI', 'D-ABO', 'D-AMN' 'D-NOZ', 'D-AME', 'D-PAÇ']
+import datetime as dt, time
+
+data = dt.date.today()
+
+itens = []
+vendas = []
+data_vendas = []
+
+def registrar_produto():
+    cod = str(input('Insira o código deste produto que você deseja adicionar'))
+    if cod in itens:
+        print('Esse produto já foi registrado!')
+    elif not cod in itens and cod[:1] == 'D':
+        itens.append(cod)
+        print('Produto registrado com sucesso!')
+        time.sleep(2)
+    else:
+        print('Código inválido, você colocou a nomenclatura corretamente?')
+    return
+
+def excluir_produto():
+    cod = str(input('Insira o código do produto que você deseja remover'))
+    if cod in itens:
+        itens.remove(cod)
+        if not cod in itens:
+            print('Produto removido com sucesso!')
+    else:
+        print('Produto não encontrado, você digitou corretamente?')
+        time.sleep(2)
+    return
+
+def nomenclaturas():
+    print('Nomenclaturas:')
+    print('------------------------------------------')
+    print('Doce de leite puro = DP')
+    print('Doce de leite com maracujá = DMAR')
+    print('Doce de leite com abacaxi = DABA')
+    print('Doce de leite com morango = DMOR')
+    print('Doce de leite com chocolate = DCHO')
+    print('Doce de leite com goiaba = DGOI')
+    print('Doce de leite com abóbora = DABO')
+    print('Doce de leite com amendoim = DAMN')
+    print('Doce de leite com nozes = DNOZ')
+    print('Doce de leite com ameixa = DAME')
+    print('Doce de leite com paçoca = DPAÇ')
+    time.sleep(2)
+    return
+
+def registrar_venda():
+    cod = str(input('Insira o código deste produto que você deseja registrar a venda'))
+    dia = str(input('Esta venda ocorreu hoje?'))
+    dia = dia.lower
+    if dia == 'sim':
+        data_vendas.append(data)
+    elif dia == 'nao' or dia == 'não':
+        dia = str(input('Qual foi a data desta venda? (Utilize ano, mês e dia, nesta ordem (202x-12-31))'))
+        if dia.isnumeric() == True:
+            data_vendas.append(dia)
+    vendas.append(cod)
+    itens.remove(cod)
+    vendas_totais += 30
+    print('Venda registrada com sucesso!')
+    time.sleep(2)
+    return
+
+def calculadora():
+    print('''1 - Vendas
+    2 - Despesas
+    3 - Cálculos básicos (margem de lucro, ticket médio, lucro, faturamento, etc.)
+    4 - Top 5 mais vendidos''')
+    op = int(input('O que você deseja calcular hoje?'))
+    if op == 1:
+        print(vendas)
+        time.sleep(2)
+
 
 print('''1 - Adicionar um produto
 2 - Remover um produto
 3 - Ver os produtos atuais
 4 - Ver nomenclaturas
-5 - Sair do programa''')
+5 - Calculadora
+6 - Registro de vendas
+7 - Sair do programa''')
 
-itens = []
+
 
 while True:
-    op = str(input('O que você deseja fazer?'))
-    if op == '1':
-        cod = str(input('Insira o código deste produto que você deseja adicionar'))
-        if cod in itens:
-            print('Esse produto já foi registrado!')
-        elif not cod in itens and cod[:2] == 'D-':
-            itens.append(cod)
-            print('Produto registrado com sucesso!')
-    elif op == '2':
-        produto = str(input('Insira o nome do produto que você deseja remover'))
-        if produto in itens:
-            itens.remove(produto)
-            if not produto in itens:
-                print('Produto removido com sucesso!')
-        else:
-            print('Produto não encontrado, você digitou corretamente?')
-    elif op == '3':
+    op = int(input('O que você deseja fazer?'))
+    if op == 1:
+        registrar_produto()
+    elif op == 2:
+        excluir_produto
+    elif op == 3:
         print(itens)
-    elif op == '4':
-        print('Nomenclaturas:')
-        print('------------------------------------------')
-        print('Doce de leite puro = D-P')
-        print('Doce de leite com maracujá = D-MAR')
-        print('Doce de leite com abacaxi = D-ABA')
-        print('Doce de leite com morango = D-MOR')
-        print('Doce de leite com chocolate = D-CHO')
-        print('Doce de leite com goiaba = D-GOI')
-        print('Doce de leite com abóbora = D-ABO')
-        print('Doce de leite com amendoim = D-AMN')
-        print('Doce de leite com nozes = D-NOZ')
-        print('Doce de leite com ameixa = D-AME')
-        print('Doce de leite com paçoca = D-PAÇ')
-    elif op == '5':
+    elif op == 4:
+        nomenclaturas()
+    elif op == 5:
+        calculadora()
+    elif op == 6:
+        registrar_venda()
+    elif op == 7:
         print('Saindo, obrigado por utilizar o programa!')
         break
